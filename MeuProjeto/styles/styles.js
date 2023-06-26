@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
       text:{
         color: '#fff'
       }
+    },
+    navbar: {
+      backgroundColor: '#328fa8',
     }
   });
 
