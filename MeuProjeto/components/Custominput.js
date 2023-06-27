@@ -1,4 +1,5 @@
 import { TextInput, StyleSheet } from 'react-native';
+import styles from '../styles/styles';
 
 const CustomInput = (props) => {
     return(
@@ -9,20 +10,7 @@ const CustomInput = (props) => {
         onChangeText={props.funcao}
         secureTextEntry={props.isPassword ? true : false}
         placeholderTextColor={'#e3e6e8'}>  
-        </TextInput>  
+        </TextInput>
     )
 }
-
-    const styles = StyleSheet.create({
-       
-        inputStyle: {
-        margin: 12,
-        padding: 8,
-        width: 300,
-        height: 55,
-        borderRadius: 3,
-        backgroundColor: '#164e6e',
-        color: '#fff'
-        },
-    })
 export default CustomInput;

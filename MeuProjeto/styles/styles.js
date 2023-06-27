@@ -27,7 +27,26 @@ const styles = StyleSheet.create({
     },
     navbar: {
       backgroundColor: '#328fa8',
-    }
+    },
+    oio: {
+      position: 'absolute', 
+      right: 20, 
+      top: 30
+    },
+    inputStyle: {      
+      margin: 12,
+      padding: 8,
+      paddingRight: 40,
+      width: 300,
+      height: 55,
+      borderRadius: 3,
+      backgroundColor: '#164e6e',
+      color: '#fff',
+      flexDirection: 'row',
+      },
+      viewInput: { 
+        position: 'relative',
+      }
   });
 
   export default styles;
