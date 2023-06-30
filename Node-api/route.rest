@@ -1,0 +1,18 @@
+GET http://localhost:3000/transactions
+###
+
+POST http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "amount": "1200",
+  "reference": "Cachorro esfomeado",
+  "date": "AGORA"  
+}
+
+###
+
+GET http://localhost:3000/transactions/649f1eb0f96d2cc29e05d483
+
+###
+

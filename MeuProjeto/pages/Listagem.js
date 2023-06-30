@@ -2,9 +2,17 @@ import { Text, View } from 'react-native';
 import styles from '../styles/styles'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Listagem() {
   const [transactions, setTransactions] = useState([]);
+  const navigation = useNavigation();
+
+  function NewUser(){
+    navigation.navigate('Cadastrar')
+  }
 
   useEffect(() => {
     const getTransactions = async() => {
@@ -25,12 +33,20 @@ export default function Listagem() {
 
   return (
     <View style={styles.containerList}>
+
+      <TouchableOpacity
+        onPress={NewUser}>
+        <View style={styles.button}>
+          <Text style={styles.button.text}>Entrar</Text>
+        </View>  
+      </TouchableOpacity>
+
         <Text>Listagem</Text>
-        { transactions.map((transaction, index ) => {
+        { transactions.map((transaction, index) => {
           return (
             <View>
-              <Text>{transaction.reference}</Text>
               <Text>{transaction.amount}</Text>
+              <Text>{transaction.reference}</Text>
               <Text>{transaction.date}</Text>
             </View>
           )

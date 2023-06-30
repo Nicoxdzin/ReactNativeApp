@@ -1,63 +1,29 @@
+require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
+const transactionsRouter = require('./routes/transactions')
+
 const app = express();
 app.use(cors());
+app.use(express.json());
+
+const db = mongoose.connection
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log ('Connected to Database'))
+
+
+app.use('/transactions', transactionsRouter)
+
 
 app.get('/', (req, res) => {
     res.send("Olá")
 })
 
-app.get('/transactions', (req, res) => {
-    // orm chamando a tabela de recursos
-    const arrTransactions = [
-        {
-            amount: 2500,
-            reference: 'Transacao 1',
-            date: new Date(),
-            currency: 'USD'
-          },
-          {
-            amount: 12500,
-            reference: 'Curso de programacao pro renato66',
-            date: new Date(),
-            currency: 'BRL'
-          },
-          {
-            amount: 3500,
-            reference: 'Mercado caro',
-            date: new Date(),
-            currency: 'USD'
-          },
-          {
-            amount: 7500,
-            reference: 'Adaptador usb c hdmi que nao funciona',
-            date: new Date(),
-            currency: 'EUR'
-          },
-          {
-            amount: 9500,
-            reference: 'Transacao 1',
-            date: new Date(),
-            currency: 'EUR'
-          },
-          {
-            amount: 2500,
-            reference: 'AIRBNB GmbH',
-            date: new Date(),
-            currency: 'USD'
-          },
-          {
-            amount: 600,
-            reference: 'Senai',
-            date: new Date(),
-            currency: 'USD'
-          }
-    ]
- 
-    res.json(arrTransactions)
- })
+
 
 const port = 3000;
 app.listen(port, () => {
+    mongoose.connect(process.env.DATABASE_URL , { useNewUrlParser: true })
     console.log("waiting for changes")
 })
